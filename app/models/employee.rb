@@ -1,5 +1,5 @@
 class Employee < ApplicationRecord
-  has_many :employee_attendances
+  has_many :employee_attendance
   has_secure_password
   enum role: { employee: 0, admin: 1, super_user: 2 }
 
