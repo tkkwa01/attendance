@@ -57,4 +57,5 @@ class EmployeesController < ApplicationController
     unless @current_employee&.admin?
     render json: { error: 'Unauthorized' }, status: :unauthorized
   end
-end
+  end
+  end
