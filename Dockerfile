@@ -1,4 +1,4 @@
-FROM ruby:3.1
+FROM ruby:3.2
 ARG RUBYGEMS_VERSION=3.3.20
 RUN mkdir /attendance
 WORKDIR /attendance
