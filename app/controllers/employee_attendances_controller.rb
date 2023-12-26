@@ -1,6 +1,6 @@
 class EmployeeAttendancesController < ApplicationController
   before_action :authenticate_request
-  before_action :set_employee_attendance, only: [:show, :update, :destroy]
+  before_action :set_employee_attendance, only: [:update, :destroy]
 
   def index
     @employee_attendances = @current_employee.employee_attendance
