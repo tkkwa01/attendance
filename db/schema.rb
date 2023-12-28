@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_23_112000) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_27_144559) do
   create_table "employee_attendances", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "employee_id", null: false
     t.datetime "check_in_time"
@@ -33,5 +33,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_23_112000) do
     t.string "password_digest"
   end
 
+  create_table "salaries", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "employee_id", null: false
+    t.decimal "amount", precision: 10, scale: 2
+    t.date "pay_period_start"
+    t.date "pay_period_end"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_salaries_on_employee_id"
+  end
+
   add_foreign_key "employee_attendances", "employees"
+  add_foreign_key "salaries", "employees"
 end

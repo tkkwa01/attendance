@@ -5,7 +5,7 @@ module Admin
     before_action :set_attendance, only: [:show, :update, :destroy]
 
     def index
-      @attendances = Attendance.all
+      @attendances = EmployeeAttendance.all
       render json: @attendances
     end
 
@@ -29,7 +29,7 @@ module Admin
     private
 
     def set_attendance
-      @attendance = Attendance.find(params[:id])
+      @attendance = EmployeeAttendance.find(params[:id])
     end
 
     def check_admin_role

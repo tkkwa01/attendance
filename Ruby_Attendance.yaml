@@ -1,0 +1,1585 @@
+openapi: 3.0.0
+info:
+  title: Ruby_Attendance
+  version: 1.0.0
+servers:
+  - url: http://0.0.0.0:3000
+tags:
+  - name: Employees
+  - name: Ateendances
+  - name: Admin
+paths:
+  /employees:
+    post:
+      tags:
+        - Employees
+      summary: AddEmployee
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                employee:
+                  name: AOI
+                  hourly_rate: 1500
+                  role: employee
+                  password: pass
+                  password_confirmation: pass
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiJ9.eyJlbXBsb3llZV9pZCI6MSwiZXhwIjoxNzAzNjg3NTQ0fQ.HMcl8sSs68VJ2_GmHIzsUVpZZNluoG7gEdr1ISUFALk
+      responses:
+        '201':
+          description: Created
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            Location:
+              schema:
+                type: string
+                example: http://0.0.0.0:3000/employees/2
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Vary:
+              schema:
+                type: string
+                example: Accept
+            ETag:
+              schema:
+                type: string
+                example: W/"de0129cedb64ed5299d26a018ebd8524"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            X-Request-Id:
+              schema:
+                type: string
+                example: 67f9d965-bf4b-4060-b201-4e36aea8faa4
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.344710'
+            Server-Timing:
+              schema:
+                type: string
+                example: >-
+                  start_processing.action_controller;dur=1.32,
+                  sql.active_record;dur=23.80,
+                  instantiation.active_record;dur=0.27,
+                  process_action.action_controller;dur=315.91
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                id: 2
+                name: 新しい従業員
+                hourly_rate: 1000
+                role: employee
+                created_at: '2023-12-26T13:04:43.415Z'
+                updated_at: '2023-12-26T13:04:43.415Z'
+                password_digest: $2a$12$liQQ2BsIZSgYvyaM4LurlusjkFobexdsWHbCgJwP58z4FvyEHb14m
+        '401':
+          description: Unauthorized
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Vary:
+              schema:
+                type: string
+                example: Accept
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            X-Request-Id:
+              schema:
+                type: string
+                example: f9facd94-d652-4460-91ca-1b24445c66e7
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.088182'
+            Server-Timing:
+              schema:
+                type: string
+                example: >-
+                  start_processing.action_controller;dur=1.05,
+                  sql.active_record;dur=18.11,
+                  instantiation.active_record;dur=0.68,
+                  halted_callback.action_controller;dur=0.91,
+                  process_action.action_controller;dur=38.83
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                error: Unauthorized
+    get:
+      tags:
+        - Employees
+      summary: GetAllEmployees
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Vary:
+              schema:
+                type: string
+                example: Accept
+            ETag:
+              schema:
+                type: string
+                example: W/"f3f9a3c0ea730cb609fcdb2f42e857b2"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            X-Request-Id:
+              schema:
+                type: string
+                example: 1f2a4ab1-75a2-4659-bbc3-824de8b5719e
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.120731'
+            Server-Timing:
+              schema:
+                type: string
+                example: >-
+                  sql.active_record;dur=16.48,
+                  start_processing.action_controller;dur=0.77,
+                  instantiation.active_record;dur=11.60,
+                  process_action.action_controller;dur=34.77
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                - id: 1
+                  name: admin
+                  hourly_rate: 1500
+                  role: admin
+                  created_at: '2023-12-23T13:52:14.020Z'
+                  updated_at: '2023-12-23T13:52:14.020Z'
+                  password_digest: $2a$12$kozFxHsCaEpUBlbc9YoSI.zFFDDVqa2ZGYjymEJsiqoeXNzflHa4e
+  /employees/6:
+    get:
+      tags:
+        - Employees
+      summary: GetEmployeeById
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Vary:
+              schema:
+                type: string
+                example: Accept
+            ETag:
+              schema:
+                type: string
+                example: W/"0db3eb0b0e1898e552d0d93d102e59f4"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            X-Request-Id:
+              schema:
+                type: string
+                example: 7da0700c-9218-46fb-89a7-e91d7c9480f7
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.062937'
+            Server-Timing:
+              schema:
+                type: string
+                example: >-
+                  start_processing.action_controller;dur=0.74,
+                  sql.active_record;dur=26.03,
+                  instantiation.active_record;dur=0.25,
+                  process_action.action_controller;dur=42.04
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                id: 1
+                name: admin
+                hourly_rate: 1500
+                role: admin
+                created_at: '2023-12-23T13:52:14.020Z'
+                updated_at: '2023-12-23T13:52:14.020Z'
+                password_digest: $2a$12$kozFxHsCaEpUBlbc9YoSI.zFFDDVqa2ZGYjymEJsiqoeXNzflHa4e
+    put:
+      tags:
+        - Employees
+      summary: Update_employee
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                employee:
+                  name: AOIkun
+                  hourly_rate: 1500
+                  role: employee
+                  password: pass
+                  password_confirmation: pass
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiJ9.eyJlbXBsb3llZV9pZCI6MSwiZXhwIjoxNzAzNjg3NTQ0fQ.HMcl8sSs68VJ2_GmHIzsUVpZZNluoG7gEdr1ISUFALk
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Vary:
+              schema:
+                type: string
+                example: Accept
+            ETag:
+              schema:
+                type: string
+                example: W/"e6c53717cc3555d2173c41af4a07857c"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            X-Request-Id:
+              schema:
+                type: string
+                example: 30d9fbc0-178e-4e36-9a57-19f7da1bae56
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.344259'
+            Server-Timing:
+              schema:
+                type: string
+                example: >-
+                  start_processing.action_controller;dur=1.70,
+                  sql.active_record;dur=28.03,
+                  instantiation.active_record;dur=0.35,
+                  process_action.action_controller;dur=283.35
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                name: AOIkun
+                hourly_rate: 1500
+                role: employee
+                password_digest: $2a$12$/hWEYSMB9OMUnuCo4nFm/uuWwMao8WpxVyFwPL2dyc5KpufjZpSHu
+                id: 6
+                created_at: '2023-12-27T13:32:34.416Z'
+                updated_at: '2023-12-27T13:37:30.076Z'
+  /employees/5:
+    delete:
+      tags:
+        - Employees
+      summary: Delete_Employee
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiJ9.eyJlbXBsb3llZV9pZCI6MSwiZXhwIjoxNzAzNjg3NTQ0fQ.HMcl8sSs68VJ2_GmHIzsUVpZZNluoG7gEdr1ISUFALk
+      responses:
+        '204':
+          description: No Content
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            X-Request-Id:
+              schema:
+                type: string
+                example: 86ccf7ff-c6fb-4292-9490-7d701b9a7bc9
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.107515'
+            Server-Timing:
+              schema:
+                type: string
+                example: >-
+                  start_processing.action_controller;dur=1.68,
+                  sql.active_record;dur=46.82,
+                  instantiation.active_record;dur=0.44,
+                  process_action.action_controller;dur=65.57
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: null
+  /employee_attendances:
+    post:
+      tags:
+        - Ateendances
+      summary: CheckIn
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                employee_attendance:
+                  check_in_time: '2023-01-01T09:00:00'
+                  check_in_latitude: 35.6895
+                  check_in_longitude: 139.6917
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiJ9.eyJlbXBsb3llZV9pZCI6NCwiZXhwIjoxNzAzNjg4NjcxfQ.I7vh4P3QbIo3BDm6MYbJD7-VUvynSajH41XMxg0SMpw
+      responses:
+        '201':
+          description: Created
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Vary:
+              schema:
+                type: string
+                example: Accept
+            ETag:
+              schema:
+                type: string
+                example: W/"7fe8a38453aa042317f52f4d5b9c6849"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            X-Request-Id:
+              schema:
+                type: string
+                example: 99d67106-a269-4125-a275-a48910f8f2dc
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.137764'
+            Server-Timing:
+              schema:
+                type: string
+                example: >-
+                  start_processing.action_controller;dur=1.88,
+                  sql.active_record;dur=19.71,
+                  instantiation.active_record;dur=0.16,
+                  process_action.action_controller;dur=68.86
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                id: 4
+                employee_id: 4
+                check_in_time: '2023-01-01T09:00:00.000Z'
+                check_out_time: null
+                check_in_latitude: 35.6895
+                check_in_longitude: 139.6917
+                check_out_latitude: null
+                check_out_longitude: null
+                created_at: '2023-12-27T13:51:37.302Z'
+                updated_at: '2023-12-27T13:51:37.302Z'
+    get:
+      tags:
+        - Ateendances
+      summary: GetAteendance
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiJ9.eyJlbXBsb3llZV9pZCI6NCwiZXhwIjoxNzAzNjg5NjU5fQ.pTtHCG2jtOOmNJM6W-ShGDfwwBYWKgePoCWjccEcWAU
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Vary:
+              schema:
+                type: string
+                example: Accept
+            ETag:
+              schema:
+                type: string
+                example: W/"b03d1a332cd5bbc73e83e9857ca1e4dc"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            X-Request-Id:
+              schema:
+                type: string
+                example: fb71416d-6c45-4223-aa7f-9177c6bb447a
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.090186'
+            Server-Timing:
+              schema:
+                type: string
+                example: >-
+                  start_processing.action_controller;dur=1.08,
+                  sql.active_record;dur=9.95,
+                  instantiation.active_record;dur=1.12,
+                  process_action.action_controller;dur=59.76
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                - id: 1
+                  employee_id: 4
+                  check_in_time: '2023-01-01T09:00:00.000Z'
+                  check_out_time: '2023-01-01T17:00:00.000Z'
+                  check_in_latitude: null
+                  check_in_longitude: null
+                  check_out_latitude: null
+                  check_out_longitude: null
+                  created_at: '2023-12-27T13:44:36.081Z'
+                  updated_at: '2023-12-27T13:44:36.081Z'
+                - id: 2
+                  employee_id: 4
+                  check_in_time: '2023-01-01T09:00:00.000Z'
+                  check_out_time: '2023-01-01T17:00:00.000Z'
+                  check_in_latitude: null
+                  check_in_longitude: null
+                  check_out_latitude: null
+                  check_out_longitude: null
+                  created_at: '2023-12-27T13:45:42.588Z'
+                  updated_at: '2023-12-27T13:45:42.588Z'
+                - id: 3
+                  employee_id: 4
+                  check_in_time: '2023-01-01T09:00:00.000Z'
+                  check_out_time: '2023-01-01T17:00:00.000Z'
+                  check_in_latitude: 35.6895
+                  check_in_longitude: 139.692
+                  check_out_latitude: null
+                  check_out_longitude: null
+                  created_at: '2023-12-27T13:48:08.062Z'
+                  updated_at: '2023-12-27T13:48:08.062Z'
+                - id: 4
+                  employee_id: 4
+                  check_in_time: '2023-01-01T09:00:00.000Z'
+                  check_out_time: '2023-01-01T14:00:00.000Z'
+                  check_in_latitude: 35.6895
+                  check_in_longitude: 139.692
+                  check_out_latitude: 35.6897
+                  check_out_longitude: 35.6899
+                  created_at: '2023-12-27T13:51:37.302Z'
+                  updated_at: '2023-12-27T14:08:09.078Z'
+                - id: 5
+                  employee_id: 4
+                  check_in_time: '2023-01-01T09:00:00.000Z'
+                  check_out_time: null
+                  check_in_latitude: 35.6895
+                  check_in_longitude: 139.692
+                  check_out_latitude: null
+                  check_out_longitude: null
+                  created_at: '2023-12-27T14:00:47.353Z'
+                  updated_at: '2023-12-27T14:00:47.353Z'
+                - id: 6
+                  employee_id: 4
+                  check_in_time: '2023-01-01T09:00:00.000Z'
+                  check_out_time: '2023-01-01T14:00:00.000Z'
+                  check_in_latitude: 35.6895
+                  check_in_longitude: 139.692
+                  check_out_latitude: 35.6897
+                  check_out_longitude: 35.6899
+                  created_at: '2023-12-27T14:07:51.742Z'
+                  updated_at: '2023-12-27T14:19:56.065Z'
+  /employee_attendances/6:
+    put:
+      tags:
+        - Ateendances
+      summary: CheckOut
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                employee_attendance:
+                  check_in_time: '2023-01-01T09:00:00'
+                  check_out_time: '2023-01-01T14:00:00'
+                  check_in_latitude: 35.6895
+                  check_in_longitude: 139.6917
+                  check_out_latitude: 35.6897
+                  check_out_longitude: 35.6899
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiJ9.eyJlbXBsb3llZV9pZCI6NCwiZXhwIjoxNzAzNjg4NjcxfQ.I7vh4P3QbIo3BDm6MYbJD7-VUvynSajH41XMxg0SMpw
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Vary:
+              schema:
+                type: string
+                example: Accept
+            ETag:
+              schema:
+                type: string
+                example: W/"9f514a019f80f8abe7caf6c43bb2630b"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            X-Request-Id:
+              schema:
+                type: string
+                example: 613335ce-7062-4701-ab1b-0ac1d9820289
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.164362'
+            Server-Timing:
+              schema:
+                type: string
+                example: >-
+                  start_processing.action_controller;dur=2.30,
+                  sql.active_record;dur=74.29,
+                  instantiation.active_record;dur=0.19,
+                  process_action.action_controller;dur=133.28
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                employee_id: 4
+                check_in_time: '2023-01-01T09:00:00.000Z'
+                check_out_time: '2023-01-01T14:00:00.000Z'
+                check_in_latitude: 35.6895
+                check_in_longitude: 139.6917
+                check_out_latitude: 35.6897
+                check_out_longitude: 35.6899
+                id: 6
+                created_at: '2023-12-27T14:07:51.742Z'
+                updated_at: '2023-12-27T14:19:56.065Z'
+  /employee_attendances/5:
+    delete:
+      tags:
+        - Ateendances
+      summary: Delete_Attendance
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiJ9.eyJlbXBsb3llZV9pZCI6NCwiZXhwIjoxNzAzNjg5NjU5fQ.pTtHCG2jtOOmNJM6W-ShGDfwwBYWKgePoCWjccEcWAU
+      responses:
+        '204':
+          description: No Content
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            X-Request-Id:
+              schema:
+                type: string
+                example: 14b3d417-195d-4afc-b34f-fc05fc260b5f
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.105483'
+            Server-Timing:
+              schema:
+                type: string
+                example: >-
+                  start_processing.action_controller;dur=1.08,
+                  sql.active_record;dur=46.27,
+                  instantiation.active_record;dur=1.64,
+                  process_action.action_controller;dur=91.25
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: null
+  /admin/attendances:
+    get:
+      tags:
+        - Admin
+      summary: Get_All_Attendances
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiJ9.eyJlbXBsb3llZV9pZCI6MSwiZXhwIjoxNzAzNzY3NzExfQ.TVFIs9VPTVhqXVWLvUy4WjzXvH-eVQkkvY0kl98Cgh4
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Vary:
+              schema:
+                type: string
+                example: Accept
+            ETag:
+              schema:
+                type: string
+                example: W/"d3d4eea7719cbce6fcea28fafad2f967"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            X-Request-Id:
+              schema:
+                type: string
+                example: e5f078ac-fe17-47e0-8b2f-90fefae7ec24
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.352498'
+            Server-Timing:
+              schema:
+                type: string
+                example: >-
+                  sql.active_record;dur=145.40,
+                  start_processing.action_controller;dur=0.64,
+                  instantiation.active_record;dur=20.97,
+                  process_action.action_controller;dur=119.67
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                - id: 1
+                  employee_id: 4
+                  check_in_time: '2023-01-01T09:00:00.000Z'
+                  check_out_time: '2023-01-01T17:00:00.000Z'
+                  check_in_latitude: null
+                  check_in_longitude: null
+                  check_out_latitude: null
+                  check_out_longitude: null
+                  created_at: '2023-12-27T13:44:36.081Z'
+                  updated_at: '2023-12-27T13:44:36.081Z'
+                - id: 2
+                  employee_id: 4
+                  check_in_time: '2023-01-01T09:00:00.000Z'
+                  check_out_time: '2023-01-01T17:00:00.000Z'
+                  check_in_latitude: null
+                  check_in_longitude: null
+                  check_out_latitude: null
+                  check_out_longitude: null
+                  created_at: '2023-12-27T13:45:42.588Z'
+                  updated_at: '2023-12-27T13:45:42.588Z'
+                - id: 3
+                  employee_id: 4
+                  check_in_time: '2023-01-01T09:00:00.000Z'
+                  check_out_time: '2023-01-01T17:00:00.000Z'
+                  check_in_latitude: 35.6895
+                  check_in_longitude: 139.692
+                  check_out_latitude: null
+                  check_out_longitude: null
+                  created_at: '2023-12-27T13:48:08.062Z'
+                  updated_at: '2023-12-27T13:48:08.062Z'
+                - id: 4
+                  employee_id: 4
+                  check_in_time: '2023-01-01T09:00:00.000Z'
+                  check_out_time: '2023-01-01T14:00:00.000Z'
+                  check_in_latitude: 35.6895
+                  check_in_longitude: 139.692
+                  check_out_latitude: 35.6897
+                  check_out_longitude: 35.6899
+                  created_at: '2023-12-27T13:51:37.302Z'
+                  updated_at: '2023-12-27T14:08:09.078Z'
+                - id: 6
+                  employee_id: 4
+                  check_in_time: '2023-01-01T09:00:00.000Z'
+                  check_out_time: '2023-01-01T14:00:00.000Z'
+                  check_in_latitude: 35.6895
+                  check_in_longitude: 139.692
+                  check_out_latitude: 35.6897
+                  check_out_longitude: 35.6899
+                  created_at: '2023-12-27T14:07:51.742Z'
+                  updated_at: '2023-12-27T14:19:56.065Z'
+  /admin/attendances/3:
+    get:
+      tags:
+        - Admin
+      summary: Get_Attendance_By_ID
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiJ9.eyJlbXBsb3llZV9pZCI6MSwiZXhwIjoxNzAzNjkwNjg3fQ.8PiHHZQ2Oi7zWEOtFUcqH_483x1pfoXa3-DA7Sig6wA
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Vary:
+              schema:
+                type: string
+                example: Accept
+            ETag:
+              schema:
+                type: string
+                example: W/"36c325ec16217f747a69c51189191f79"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            X-Request-Id:
+              schema:
+                type: string
+                example: d92ebee1-2aa6-40d2-a0c5-ef80b622f01c
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.259237'
+            Server-Timing:
+              schema:
+                type: string
+                example: >-
+                  start_processing.action_controller;dur=0.75,
+                  sql.active_record;dur=16.24,
+                  instantiation.active_record;dur=12.47,
+                  process_action.action_controller;dur=49.70
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                id: 3
+                employee_id: 4
+                check_in_time: '2023-01-01T09:00:00.000Z'
+                check_out_time: '2023-01-01T17:00:00.000Z'
+                check_in_latitude: 35.6895
+                check_in_longitude: 139.692
+                check_out_latitude: null
+                check_out_longitude: null
+                created_at: '2023-12-27T13:48:08.062Z'
+                updated_at: '2023-12-27T13:48:08.062Z'
+    put:
+      tags:
+        - Admin
+      summary: Update_Attendance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                id: 3
+                employee_id: 4
+                check_in_time: '2023-01-01T09:00:00.000Z'
+                check_out_time: '2023-01-01T17:00:00.000Z'
+                check_in_latitude: 35.6895
+                check_in_longitude: 139.699
+                check_out_latitude: null
+                check_out_longitude: null
+                created_at: '2023-12-27T13:48:08.062Z'
+                updated_at: '2023-12-27T13:48:08.062Z'
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiJ9.eyJlbXBsb3llZV9pZCI6MSwiZXhwIjoxNzAzNjkwNjg3fQ.8PiHHZQ2Oi7zWEOtFUcqH_483x1pfoXa3-DA7Sig6wA
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Vary:
+              schema:
+                type: string
+                example: Accept
+            ETag:
+              schema:
+                type: string
+                example: W/"bca71d4fea7511d810295f8697c015ac"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            X-Request-Id:
+              schema:
+                type: string
+                example: 2a4ee673-38b9-4861-a757-d8eb986196e4
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.153054'
+            Server-Timing:
+              schema:
+                type: string
+                example: >-
+                  start_processing.action_controller;dur=1.29,
+                  sql.active_record;dur=31.66,
+                  instantiation.active_record;dur=8.01,
+                  unpermitted_parameters.action_controller;dur=1.04,
+                  process_action.action_controller;dur=127.06
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                check_in_time: '2023-01-01T09:00:00.000Z'
+                check_out_time: '2023-01-01T17:00:00.000Z'
+                employee_id: 4
+                id: 3
+                check_in_latitude: 35.6895
+                check_in_longitude: 139.692
+                check_out_latitude: null
+                check_out_longitude: null
+                created_at: '2023-12-27T13:48:08.062Z'
+                updated_at: '2023-12-27T13:48:08.062Z'
+    delete:
+      tags:
+        - Admin
+      summary: Delete_Attendance
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiJ9.eyJlbXBsb3llZV9pZCI6MSwiZXhwIjoxNzAzNjkwNjg3fQ.8PiHHZQ2Oi7zWEOtFUcqH_483x1pfoXa3-DA7Sig6wA
+      responses:
+        '204':
+          description: No Content
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache
+            X-Request-Id:
+              schema:
+                type: string
+                example: 1c1b41a5-aac5-48dd-bd47-316af4d6d8aa
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.201815'
+            Server-Timing:
+              schema:
+                type: string
+                example: >-
+                  start_processing.action_controller;dur=0.46,
+                  sql.active_record;dur=8.26,
+                  instantiation.active_record;dur=0.09,
+                  process_action.action_controller;dur=11.93
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: null
+  /admin/salaries/calculate:
+    post:
+      tags:
+        - Admin
+      summary: Calculate_Salary
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                year: 2023
+                month: 1
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiJ9.eyJlbXBsb3llZV9pZCI6MSwiZXhwIjoxNzAzNzY3NzExfQ.TVFIs9VPTVhqXVWLvUy4WjzXvH-eVQkkvY0kl98Cgh4
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Vary:
+              schema:
+                type: string
+                example: Accept
+            ETag:
+              schema:
+                type: string
+                example: W/"aa2c732506564394ff9006348ff9d943"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            X-Request-Id:
+              schema:
+                type: string
+                example: 9de06ce0-1715-4007-b17b-abce039296e9
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.109450'
+            Server-Timing:
+              schema:
+                type: string
+                example: >-
+                  sql.active_record;dur=42.25,
+                  start_processing.action_controller;dur=0.61,
+                  instantiation.active_record;dur=0.31,
+                  process_action.action_controller;dur=80.71
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Salaries for 1/2023 calculated successfully
+  /admin/salaries/employee/4:
+    get:
+      tags:
+        - Admin
+      summary: Get_Salary
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiJ9.eyJlbXBsb3llZV9pZCI6MSwiZXhwIjoxNzAzNzY3NzExfQ.TVFIs9VPTVhqXVWLvUy4WjzXvH-eVQkkvY0kl98Cgh4
+        - name: year
+          in: query
+          schema:
+            type: integer
+          example: '2023'
+        - name: month
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Vary:
+              schema:
+                type: string
+                example: Accept
+            ETag:
+              schema:
+                type: string
+                example: W/"6d41847829ae7ca4e844494fef73f01e"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            X-Request-Id:
+              schema:
+                type: string
+                example: 7b9b5e5a-1cc3-4357-be46-ff5ac1cb2bc7
+            X-Runtime:
+              schema:
+                type: number
+                example: '0.046569'
+            Server-Timing:
+              schema:
+                type: string
+                example: >-
+                  start_processing.action_controller;dur=1.19,
+                  sql.active_record;dur=9.06,
+                  instantiation.active_record;dur=0.70,
+                  process_action.action_controller;dur=17.59
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                id: 1
+                employee_id: 4
+                amount: '39000.0'
+                pay_period_start: '2023-01-01'
+                pay_period_end: '2023-01-31'
+                created_at: '2023-12-28T12:06:08.092Z'
+                updated_at: '2023-12-28T12:06:08.092Z'
+  /login:
+    post:
+      tags:
+        - default
+      summary: Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: AOI
+                password: pass
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Vary:
+              schema:
+                type: string
+                example: Accept
+            ETag:
+              schema:
+                type: string
+                example: W/"7d901d6f2451a12ef52e7cf5a8bb1c5e"
+            Cache-Control:
+              schema:
+                type: string
+                example: max-age=0, private, must-revalidate
+            X-Request-Id:
+              schema:
+                type: string
+                example: 1b6d49e1-7d7e-41b3-a886-079259ea88e7
+            X-Runtime:
+              schema:
+                type: number
+                example: '1.306266'
+            Server-Timing:
+              schema:
+                type: string
+                example: >-
+                  start_processing.action_controller;dur=5.89,
+                  sql.active_record;dur=538.04,
+                  instantiation.active_record;dur=1.76,
+                  process_action.action_controller;dur=1056.18
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                token: >-
+                  eyJhbGciOiJIUzI1NiJ9.eyJlbXBsb3llZV9pZCI6MSwiZXhwIjoxNzAzMzQzMjE2fQ.zFQqrLVt-WiqhYS3eDo34NLubR7tY1_MJszoHAsPxHU
+            text/plain:
+              schema:
+                type: string
+              example: null

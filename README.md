@@ -1,24 +1,12 @@
-# README
+# 勤怠管理システムAPI
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 概要
+勤怠管理システムのAPIです。
+OpenAPI文書はRuby_Attendance.yamlを参照してください。
 
-Things you may want to cover:
+## 使用方法
+```bash
+docker-compose up --build
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+localhost:3000でアクセスできます。

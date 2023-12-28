@@ -35,7 +35,7 @@ class EmployeeAttendancesController < ApplicationController
   end
 
   def employee_attendance_params
-    params.require(:employee_attendance).permit(:check_in_time, :check_out_time, :employee_id, :latitude, :longitude)
+    params.require(:employee_attendance).permit(:check_in_time, :check_out_time, :check_in_latitude, :check_in_longitude,:check_out_latitude, :check_out_longitude)
   end
 
 end
